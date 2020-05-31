@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 
 import { withRouter } from 'react-router-dom';
 
-import { Container, Box, Message } from './styles';
+import LoginProvider from '../../providers/LoginProvider';
+import { login } from '../../services/auth';
+
+import { Container, Box, RegisterBox, Message } from './styles';
 
 class Login extends Component {
   state = {
@@ -15,13 +18,36 @@ class Login extends Component {
     passwordSelected: false,
   };
 
-
+  handleLogin = async e => {
+    e.preventDefault();
+    const { email, password } = this.state;
+    if (!email || !password) {
+      this.setState({
+        error: 'Fill the email and password fields to keep going!',
+      });
+    } else {
+      this.setState({ error: '' });
+      try {
+        const LProvider = new LoginProvider();
+        const response = await LProvider.login(email, password);
+        console.log(response.data);
+        await login(response.data.token, response.data.user);
+        this.props.history.push('/');
+      } catch (err) {
+        this.setState({
+          error:
+            'Please, verify if you typed your email and password correctly',
+        });
+        console.log(err);
+      }
+    }
+  };
 
   render() {
     return (
       <>
         <Container>
-          <Box>
+          <Box onSubmit={this.handleLogin}>
             <div>
               <img src="https://i.imgur.com/2FS62Ra.png" alt="logo"/>
             </div>
@@ -54,11 +80,19 @@ class Login extends Component {
                     placeholder={this.state.passwordSelected ? '' : 'Password'}
                     onChange={e => this.setState({ password: e.target.value })}
                   />
-              {this.state.error ? <Message>{this.state.error}</Message> : ''}
+              {
+                this.state.error ?
+                <Message>{this.state.error}</Message> :
+                null
+              }
             </div>
-            <br /><br /><br /><br /><br />
             <button type="submit">Sign In</button>
           </Box>
+          <RegisterBox>
+            <small>New around here?</small>{' '}
+            <a href="/Register">Create an account</a>
+            <small>.</small>
+          </RegisterBox>
         </Container>
       </>
     );

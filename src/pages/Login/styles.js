@@ -19,23 +19,11 @@ export const Box = styled.form`
   align-items: center;
   border-radius: 22px;
   background-color: #ffffff;
-  -webkit-box-shadow: -2px 10px 29px 0px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: -2px 10px 29px 0px rgba(0, 0, 0, 0.5);
-  box-shadow: -2px 10px 29px 0px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: -2px 10px 29px 0px rgba(0, 0, 0, 0.72);
+  -moz-box-shadow: -2px 10px 29px 0px rgba(0, 0, 0, 0.72);
+  box-shadow: -2px 10px 29px 0px rgba(0, 0, 0, 0.72);
   animation-name: FadeIn;
   animation-duration: 600ms;
-
-  transition: box-shadow 100ms linear; /* vendorless fallback */
-  -o-transition: box-shadow 100ms linear; /* opera */
-  -ms-transition: box-shadow 100ms linear; /* IE 10 */
-  -moz-transition: box-shadow 100ms linear; /* Firefox */
-  -webkit-transition: box-shadow 100ms linear; /*safari and chrome */
-
-  transition: transform 100ms linear; /* vendorless fallback */
-  -o-transition: transform 100ms linear; /* opera */
-  -ms-transition: transform 100ms linear; /* IE 10 */
-  -moz-transition: transform 100ms linear; /* Firefox */
-  -webkit-transition: transform 100ms linear; /*safari and chrome */
 
   small {
     font-size: 16px;
@@ -84,9 +72,9 @@ export const Box = styled.form`
     background: #fff;
     height: 50px;
     width: 60%;
+    margin-top: 80px;
     border: 1px solid #3bb5ff;
     border-radius: 28px;
-    margin-top: 10px;
     transition: 500ms;
     &:hover {
       color: #fff;
@@ -96,14 +84,6 @@ export const Box = styled.form`
     &:focus {
       outline-width: 0;
     }
-  }
-
-  &:hover {
-    -webkit-box-shadow: -2px 10px 29px 0px rgba(0, 0, 0, 0.72);
-    -moz-box-shadow: -2px 10px 29px 0px rgba(0, 0, 0, 0.72);
-    box-shadow: -2px 10px 29px 0px rgba(0, 0, 0, 0.72);
-
-    transform: scale(1.05);
   }
 
   @keyframes FadeIn {
@@ -123,6 +103,47 @@ export const Box = styled.form`
     to {
       transform: translateX(-30);
       transform: translateX(0);
+    }
+  }
+`;
+
+export const RegisterBox = styled.form`
+  height: 60px;
+  width: 450px;
+  margin-top: 30px;
+  padding: 20px;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 20px;
+  background-color: #ffffff;
+  -webkit-box-shadow: -2px 10px 29px 0px rgba(0, 0, 0, 0.72);
+  -moz-box-shadow: -2px 10px 29px 0px rgba(0, 0, 0, 0.72);
+  box-shadow: -2px 10px 29px 0px rgba(0, 0, 0, 0.72);
+  animation-name: MoveFromRight;
+  animation-duration: 1s;
+  animation-delay: 600ms;
+  animation-fill-mode: backwards;
+  a {
+    font-size: 16px;
+    font-weight: 300;
+    font-family: sans-serif;
+    text-decoration: none;
+    color: #005eff;
+  }
+  small {
+    font-size: 16px;
+    font-weight: 300;
+    font-family: sans-serif;
+  }
+  @keyframes MoveFromRight {
+    from {
+      opacity: 0;
+      transform: translateX(50%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0%);
     }
   }
 `;
