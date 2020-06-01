@@ -30,7 +30,6 @@ class Login extends Component {
       try {
         const LProvider = new LoginProvider();
         const response = await LProvider.login(email, password);
-        console.log(response.data);
         await login(response.data.token, response.data.user);
         this.props.history.push('/');
       } catch (err) {
@@ -38,7 +37,6 @@ class Login extends Component {
           error:
             'Please, verify if you typed your email and password correctly',
         });
-        console.log(err);
       }
     }
   };

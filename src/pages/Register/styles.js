@@ -11,7 +11,7 @@ export const Container = styled.div`
 `;
 
 export const Box = styled.form`
-  height: 450px;
+  height: 600px;
   width: 450px;
   padding: 20px;
   text-align: center;
@@ -107,7 +107,7 @@ export const Box = styled.form`
   }
 `;
 
-export const RegisterBox = styled.form`
+export const LoginBox = styled.form`
   height: 60px;
   width: 450px;
   margin-top: 30px;
